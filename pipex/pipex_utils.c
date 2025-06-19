@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:43:07 by albcamac          #+#    #+#             */
-/*   Updated: 2025/06/19 16:57:54 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:55:16 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,13 @@ void	exit_error(const char *msg, int code, char **cmd, char *path)
 		free(path);
 	if (cmd)
 		free_array(cmd);
-	perror(msg);
+	if (msg)
+	{
+		write(2, msg, ft_strlen(msg));
+		write(2, "\n", 1);
+	}
+	else
+		perror(msg);
 	exit(code);
 }
 

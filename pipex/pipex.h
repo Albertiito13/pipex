@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:12:54 by albcamac          #+#    #+#             */
-/*   Updated: 2025/06/19 16:57:42 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:24:16 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <stdio.h>
+# include <errno.h>
 
 # include "libft/libft.h"
 

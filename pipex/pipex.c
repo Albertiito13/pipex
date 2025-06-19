@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 14:09:04 by albcamac          #+#    #+#             */
-/*   Updated: 2025/06/19 18:06:18 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:33:29 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(int ac, char **av, char **envp)
 	pid_t	pid2;
 
 	if (ac != 5)
-		exit_error(NULL, 1, NULL, NULL);
+		exit_error("Numero de argumentos no valido", 1, NULL, NULL);
 	if (pipe(fd) == -1)
 		exit_error(NULL, 1, NULL, NULL);
 	pid1 = fork();
