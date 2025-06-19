@@ -6,7 +6,7 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:12:54 by albcamac          #+#    #+#             */
-/*   Updated: 2025/06/18 21:11:34 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:57:42 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 char	*get_cmd_path(char *cmd, char **envp);
 void	free_array(char **arr);
-void	exit_error(const char *msg);
+void	exit_error(const char *msg, int code, char **cmd, char *path);
 void	arg_error(void);
 
 #endif

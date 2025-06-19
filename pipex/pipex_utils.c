@@ -6,11 +6,18 @@
 /*   By: albcamac <albcamac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 15:43:07 by albcamac          #+#    #+#             */
-/*   Updated: 2025/06/18 21:02:16 by albcamac         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:57:54 by albcamac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static char	*check_direct_path(char *cmd)
+{
+	if (access(cmd, F_OK) == 0)
+		return (ft_strdup(cmd));
+	return (NULL);
+}
 
 static char	*join_path(char *dir, char *cmd)
 {
@@ -31,8 +38,9 @@ char	*get_cmd_path(char *cmd, char **envp)
 	char	*full_path;
 	int		i;
 
-	if (access(cmd, X_OK) == 0)
-		return (cmd);
+	full_path = check_direct_path(cmd);
+	if (full_path)
+		return (full_path);
 	while (*envp && ft_strncmp(*envp, "PATH=", 5))
 		envp++;
 	if (!*envp)
@@ -53,10 +61,14 @@ char	*get_cmd_path(char *cmd, char **envp)
 	return (NULL);
 }
 
-void	exit_error(const char *msg)
+void	exit_error(const char *msg, int code, char **cmd, char *path)
 {
+	if (path)
+		free(path);
+	if (cmd)
+		free_array(cmd);
 	perror(msg);
-	exit(EXIT_FAILURE);
+	exit(code);
 }
 
 void	free_array(char **arr)
@@ -69,10 +81,4 @@ void	free_array(char **arr)
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
-}
-
-void	arg_error(void)
-{
-	write(2, "Usage: ./pipex file1 cmd1 cmd2 file2\n", 38);
-	exit(1);
 }
